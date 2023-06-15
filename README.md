@@ -1,4 +1,7 @@
 # Wides_2023
+"python_api_test.h" could help to run python script in c++ file. It can run python with any number of parameters at any location and read python's running results by reading and writing txt files.
+
+Usage:
 1. copy the "python_api_test.h" file to the same directory your cpp file exists
 2. add #include "python_api_test.h" in your cpp file
 3. call function python_api(func, args) to run python scripts
