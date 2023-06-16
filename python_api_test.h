@@ -6,7 +6,7 @@
 #include <string>
 #include <map>
 
-int python_api(std::string name, std::string args) 
+std::map<std::string, std::string> python_api(std::string name, std::string args) 
 {
     std::cout << "-------- Python application begin --------\n" << std::endl;
 
@@ -14,12 +14,6 @@ int python_api(std::string name, std::string args)
     std::ostringstream cmd;
     cmd << "python3 " + name + " " + args;
 
-    
-
-    // Concatenate the arguments
-    // for(int i = 1; i < argc; i++) {
-    //     cmd << " " << argv[i];
-    // }
     std::cout << cmd.str().c_str();
     // Run the command
     int ret = system(cmd.str().c_str());
@@ -42,12 +36,12 @@ int python_api(std::string name, std::string args)
     }
 
     // Print the data
-    std::cout << "return value:" << std::endl;
-    for (const auto &pair : data) {
-        std::cout << pair.first << ": " << pair.second << std::endl;
-    }
+    // std::cout << "return value:" << std::endl;
+    // for (const auto &pair : data) {
+    //     std::cout << pair.first << ": " << pair.second << std::endl;
+    // }
 
-    return 0;
+    return data;
 }
 
 #endif

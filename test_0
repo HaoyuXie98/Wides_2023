@@ -1,17 +1,24 @@
 import sys
 import argparse
 
-def writetxt(a, b):
-    with open("output.txt", "w") as f:
-      f.write(f"name, {a}\nage, {b}\n")
+def writetxt(data):
+    with open("output.txt", "a") as f:
+        for key, value in data.items():
+            f.write(f"{key},{value}\n")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('name', type=str)
     parser.add_argument('age', type=int)
     args = parser.parse_args()
+
     print(args.name)
     print(args.age)
 
-    writetxt(args.name, args.age)
+    data = {
+        "name": args.name,
+        "age": args.age
+    }
+
+    writetxt(data)
     sys.exit(123)

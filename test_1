@@ -1,9 +1,9 @@
 import sys
 import argparse
 
-def writetxt(sum):
+def writetxt(name, data):
     with open("output.txt", "w") as f:
-      f.write(f"sum, {sum}")
+      f.write(f"{name}, {data}")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -16,5 +16,5 @@ if __name__ == '__main__':
     print(args.num3)
     sum = args.num1 + args.num2 + args.num3
 
-    writetxt(sum)
+    writetxt("sum", sum)
     sys.exit(123)
