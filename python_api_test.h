@@ -12,9 +12,9 @@ std::map<std::string, std::string> python_api(std::string name, std::string args
 
     // Prepare the base command
     std::ostringstream cmd;
-    cmd << "python3 " + name + " " + args;
+    cmd << "python " + name + " " + args;
 
-    std::cout << cmd.str().c_str();
+    std::cout << cmd.str().c_str() << std::endl;
     // Run the command
     int ret = system(cmd.str().c_str());
 
