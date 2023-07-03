@@ -6,6 +6,7 @@
 :    - Change the rotation angle of the XYtable as constant number, 0 - no need to modify it during the indoor experiment
 :    - Hardcode the XYtable index as xytable 2
 :    - Update the system abspath layers
+:    - Updata the logging funciton
 """
 
 # Import Libraries
