@@ -23,7 +23,6 @@ import logging
 log_file_path = 'log.txt'
 logging.basicConfig(filename=log_file_path, level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
-
 matplotlib.use('TkAgg')
 from matplotlib import pyplot as plt
 
@@ -45,11 +44,12 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-X", "--x", type=int, default=0, help="x coordinate on XY table")
     parser.add_argument("-Y", "--y", type=int, default=0, help="y coordinate on XY table")
+    parser.add_argument("-C", "--Corner", dest='corner', type=str, default='2', help="the corner of XY table")
     # parser.add_argument("-R", "--r", type=int, default=0, help="rotation angle of the array on XY table")
     args = parser.parse_args()
 
     # Create an XY-table object
-    xytable2 = xytable_packages.object.XYTable('xytable2')
+    xytable = xytable_packages.object.XYTable('xytable'+args.corner)
 
     # Set up the movement parameters
     x = args.x
@@ -57,16 +57,16 @@ def main():
     # r = args.r
              
     # Move
-    # xytable2.move(x, y, r)
-    xytable2.move(x, y, 0)
-
+    # xytable.move(x, y, r)
+    xytable.move(x, y, 0)
+    
     xy_status = "Run"
     while xy_status == "Run":
         time.sleep(1)  # Adjust the sleep duration as needed
-        xy_status, rotator_status, current_position = xytable2.check()
+        xy_status, rotator_status, current_position = xytable.check()
         if xy_status == "Idle":
-            logging.info("The current position: {}".format(current_position))
-        
+            logging.info("The current position of 'xytable{}': {}".format(args.corner, current_position))
+    
 
 
 if __name__ == '__main__':
